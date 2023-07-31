@@ -1,0 +1,28 @@
+Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+
+Solution:
+By using regular expression...............................
+
+SELECT DISTINCT(CITY)
+FROM STATION 
+WHERE CITY REGEXP '^[aeiou]'
+
+By using OR...............................................
+
+SELECT DISTINCT(CITY)
+FROM STATION 
+WHERE (CITY LIKE "A%") 
+    OR (CITY LIKE "E%")
+    OR (CITY LIKE "I%")
+    OR (CITY LIKE "O%")
+    OR (CITY LIKE "U%");
+
+By using SUBSTR(string, start, length).....................................
+
+SUBSTR is 1 based indexing.
+Therefore, SUBSTR(CITY, 1, 1) means extracting substring at position 1 of length 1 from CITY column.
+
+SELECT DISTINCT(CITY)
+FROM STATION 
+WHERE SUBSTR(CITY, 1, 1) IN ('A', 'E', 'I', 'O', 'U');
+
